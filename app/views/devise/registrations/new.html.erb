@@ -1,0 +1,40 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+<section class="hero">
+<div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
+                        <div class="card border-none">
+                            <div class="card-block">
+                                <div class="mt-2 text-center">
+                                    <h2>Create Your Account</h2>
+                                </div>
+                                <p class="mt-4 text-white lead text-center">
+                                    Sign up to get started with Li coin
+                                </p>
+                                <div class="mt-4">
+                                    <form>
+                                        <div class="form-group">
+                                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter email address" %>
+                                        </div>
+                                        <div class="form-group">
+                                            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Enter password" %>
+                                        </div>
+                                        <div class="form-group">
+                                           <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:"Confirm password" %>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                                    </form>
+                                    <div class="clearfix"></div>
+                                    <p class="content-divider center mt-4"><span>or</span></p>
+                                </div>
+                                <p class="text-center">
+                                    Already have an account? <%= render "devise/shared/links" %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+<% end %>

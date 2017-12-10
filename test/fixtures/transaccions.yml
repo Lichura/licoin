@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  precio_actual: 
+  tipo_moneda: MyString
+  precio_maximo: 
+  precio_minimo: 
+  porcentaje: 
+  compra: false
+
+two:
+  precio_actual: 
+  tipo_moneda: MyString
+  precio_maximo: 
+  precio_minimo: 
+  porcentaje: 
+  compra: false
