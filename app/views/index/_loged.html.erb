@@ -1,67 +1,66 @@
 <div class="d-flex justify-content-around align-items-center align-content-around flex-wrap">
   <div class="row">
-        <form>
-          <div class="form-group row">
-            <label class="col-sm-6 col-form-label">Precio Actual</label>
-            <div class="col-sm-6">
-              <p class="form-control-static" id="actual_price_text"><%= @tickers[0] %></p>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-6 col-form-label">Precio Ultima transaccion</label>
-            <div class="col-sm-6">
-              <p class="form-control-static" id="last_transaction_price_text"><%= @tickers[6] %></p>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-6 col-form-label">Precio anterior</label>
-            <div class="col-sm-6">
-              <p class="form-control-static" id="last_price_text"><%= @precio_anterior %></p>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-6 col-form-label">variacion entre las dos ultimas llamadas</label>
-            <div class="col-sm-6">
-              <p class="form-control-static" id="varation_text"><%= @variacion %></p>
-            </div>
-          </div>
-          <button id="get_actual_price" type="submit" class="btn btn-primary">Obtener precio</button>
-        </form>
-      </div>
-      <form>
-        <div class="form-group row">
-          <label class="col-sm-6 col-form-label">USD</label>
-          <div class="col-sm-6">
-            <p class="form-control-static" >0</p>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-6 col-form-label">BCH</label>
-          <div class="col-sm-6">
-            <p class="form-control-static" >0</p>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-6 col-form-label">Resultado neto:</label>
-          <div class="col-sm-6">
-            <p class="form-control-static" >0</p>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="example-text-input" class="col-6 col-form-label">Moneda virtual</label>
-          <div class="col-6">
-            <input class="form-control" type="text" value="0" id="example-text-input">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="example-text-input" class="col-6 col-form-label">Porcentaje</label>
-          <div class="col-6">
-            <input class="form-control" type="text" value="0" id="example-text-input">
-          </div>
-        </div>
+
+                                  <div class="form-group row">
+                                    <label class="col-sm-6 col-form-label">Precio Actual</label>
+                                    <div class="col-sm-6">
+                                      <p class="form-control-static" id="actual_price_text"><%= @tickers[0] %></p>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                  <label for="inputPassword" class="col-sm-6 col-form-label">Precio Ultima transaccion</label>
+                                  <div class="col-sm-6">
+                                    <p class="form-control-static" id="last_transaction_price_text"><%= @tickers[6] %></p>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="inputPassword" class="col-sm-6 col-form-label">Precio anterior</label>
+                                  <div class="col-sm-6">
+                                    <p class="form-control-static" id="last_price_text"><%= @precio_anterior %></p>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="inputPassword" class="col-sm-6 col-form-label">variacion entre las dos ultimas llamadas</label>
+                                  <div class="col-sm-6">
+                                    <p class="form-control-static" id="varation_text"><%= @variacion %></p>
+                                  </div>
+                                </div>
+                            <button id="get_actual_price" class="btn btn-primary">Obtener precio</button>
+                            </div>
+
+                              <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">USD</label>
+                                <div class="col-sm-6">
+                                  <p class="form-control-static" >0</p>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">BCH</label>
+                                <div class="col-sm-6">
+                                  <p class="form-control-static" >0</p>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">Resultado neto:</label>
+                                <div class="col-sm-6">
+                                  <p class="form-control-static" >0</p>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="example-text-input" class="col-6 col-form-label">Moneda virtual</label>
+                                <div class="col-6">
+                                  <input class="form-control" type="text" value="0" id="example-text-input">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="example-text-input" class="col-6 col-form-label">Porcentaje</label>
+                                <div class="col-6">
+                                  <input class="form-control" type="text" value="0" id="example-text-input">
+                                </div>
+                              </div>
         <button type="submit" class="btn btn-primary">Ejecutar</button>
         <button type="submit" class="btn btn-danger">Detener</button>
-        </form>
+
     </div>
 </div>
 
@@ -82,6 +81,7 @@
 
 <script>
 $(document).ready(function () {
+  console.log("se cargo la pagina");
 $('#get_actual_price').click(function(){
 
 
@@ -92,9 +92,7 @@ $.ajax({
         error:function(data){
             debugger;
         }
-
       });
-
 });
 
 });
