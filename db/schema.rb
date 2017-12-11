@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210100356) do
+ActiveRecord::Schema.define(version: 20171211172737) do
+
+  create_table "monedas", force: :cascade do |t|
+    t.string   "nombre"
+    t.decimal  "valor_de_compra"
+    t.decimal  "cantidad"
+    t.decimal  "porcentaje_venta"
+    t.decimal  "valor_de_venta"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "transaccions", force: :cascade do |t|
     t.float    "precio_actual"

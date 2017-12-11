@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  valor_de_compra: 9.99
+  cantidad: 9.99
+  porcentaje_venta: 9.99
+  valor_de_venta: 9.99
+
+two:
+  nombre: MyString
+  valor_de_compra: 9.99
+  cantidad: 9.99
+  porcentaje_venta: 9.99
+  valor_de_venta: 9.99

@@ -1,134 +1,129 @@
 <div class="d-flex justify-content-around align-items-center align-content-around flex-wrap">
   <div class="row">
     <div class="p-2">
-                                  <div class="form-group row">
-                                    <label class="col-sm-6 col-form-label">Precio Actual</label>
-                                    <div class="col-sm-6">
-                                      <p class="form-control-static" id="actual_price_text"><%= @tickers[0] %></p>
-                                    </div>
-                                  </div>
-                                  <div class="form-group row">
-                                  <label for="inputPassword" class="col-sm-6 col-form-label">Precio Ultima transaccion</label>
-                                  <div class="col-sm-6">
-                                    <p class="form-control-static" id="last_transaction_price_text"><%= @tickers[6] %></p>
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputPassword" class="col-sm-6 col-form-label">Precio anterior</label>
-                                  <div class="col-sm-6">
-                                    <p class="form-control-static" id="last_price_text"><%= @precio_anterior %></p>
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputPassword" class="col-sm-6 col-form-label">variacion entre las dos ultimas llamadas</label>
-                                  <div class="col-sm-6">
-                                    <p class="form-control-static" id="varation_text"><%= @variacion %></p>
-                                  </div>
-                                </div>
-                            <button id="get_actual_price" class="btn btn-primary">Obtener precio</button>
-                            </div>
-</div>
-<div class="p-2">
-                              <div class="form-group row">
-                                <label class="col-sm-6 col-form-label">USD</label>
-                                <div class="col-sm-6">
-                                  <p class="form-control-static" >0</p>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-6 col-form-label">BCH</label>
-                                <div class="col-sm-6">
-                                  <p class="form-control-static" >0</p>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-6 col-form-label">Resultado neto:</label>
-                                <div class="col-sm-6">
-                                  <p class="form-control-static" id="net_result_text">0</p>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="example-text-input" class="col-6 col-form-label">Moneda virtual</label>
-                                <div class="col-6">
-                                  <input id="virtual_coin_input" class="form-control" type="text" value="0" id="example-text-input">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="example-text-input" class="col-6 col-form-label">Porcentaje</label>
-                                <div class="col-6">
-                                  <input class="form-control" id="porcentaje_input" type="text" value="0" id="example-text-input">
-                                </div>
-                              </div>
-        <button type="submit" id="execute_transactions" class="btn btn-primary">Ejecutar</button>
-        <button type="submit" class="btn btn-danger">Detener</button>
-</div>
-
-<div class="p-2">
-                              <div class="form-group row">
-                                <label class="col-sm-6 col-form-label">Porcentaje actual respecto a precio de compra</label>
-                                <div class="col-sm-6">
-                                  <p class="form-control-static" >0</p>
-                                </div>
-                              </div>
-                                <div class="form-group row">
-                                <label class="col-sm-6 col-form-label">Ultimo precio de compra:</label>
-                                <div class="col-sm-6">
-                                  <p class="form-control-static" >0</p>
-                                </div>
-                              </div>
-                                                          <button id="get_actual_price" class="btn btn-primary">historico de transacciones</button>
-
-</div>
+      <%= form_tag("/index/get_actual_price", method: 'post', remote: true ) do %>
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label">Precio Actual</label>
+          <div class="col-sm-6">
+            <p class="form-control-static" id="actual_price_text"><%= @tickers[0] %></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-6 col-form-label">Precio Ultima transaccion</label>
+          <div class="col-sm-6">
+            <p class="form-control-static" id="last_transaction_price_text"><%= @tickers[6] %></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-6 col-form-label">Precio anterior</label>
+          <div class="col-sm-6">
+            <p class="form-control-static" id="last_price_text"><%= @precio_anterior %></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-6 col-form-label">variacion entre las dos ultimas llamadas</label>
+          <div class="col-sm-6">
+            <p class="form-control-static" id="varation_text"><%= @variacion %></p>
+          </div>
+        </div>
+        <button id="get_actual_price" class="btn btn-primary">Obtener precio</button>
+      <% end %>
     </div>
+          <div class="p-2">
+            <%= form_tag("/index/iniciar_bot", method: 'post', remote: true ) do %>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">USD</label>
+                <div class="col-sm-6">
+                  <p class="form-control-static" id="net_result_text">0</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">BCH</label>
+                <div class="col-sm-6">
+                  <p class="form-control-static" id="coins_result_text" >0</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <%= collection_select :moneda, :id, Moneda.all, :id, :nombre, {include_blank: true}, {:class => "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-6 col-form-label">Moneda virtual</label>
+                <div class="col-6">
+                  <%= text_field_tag :plata, "", class: "form-control", id:"virtual_coin_input" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-6 col-form-label">Porcentaje</label>
+                <div class="col-6">
+                  <%= text_field_tag :porcentaje, "", class: "form-control", id:"porcentaje_input" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-6 col-form-label">Iteraciones</label>
+                <div class="col-6">
+                  <%= text_field_tag :iteraciones, "", class: "form-control", id:"iteraciones_input" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-6 col-form-label">Estado: </label>
+                <div class="col-6">
+                  <p class="form-control-static" id="estado_text"><%= @estado %></p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-6 col-form-label">Iteracion N: </label>
+                <div class="col-6">
+                    <p class="form-control-static" id="iteracion_text"><%= @iteracion %></p>
+                  </div>
+                </div>
+                <%= submit_tag('ejecutar',id:"execute_transactions", class: "btn btn-primary") %>
+              <% end %>
+            </div>
+            </div>
+            <div class="p-2">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">Porcentaje actual respecto a precio de compra</label>
+                <div class="col-sm-6">
+                  <p class="form-control-static" >0</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">Ultimo precio de compra:</label>
+                <div class="col-sm-6">
+                  <p class="form-control-static" >0</p>
+                </div>
+              </div>
+              <button id="get_actual_price" class="btn btn-primary">historico de transacciones</button>
+            </div>
+  </div>
 </div>
 
 
 
 
-
-<%= line_chart Transaccion.order('created_at DESC').limit(20).group(:created_at).sum(:precio_actual),
-    title: 'Monthly Spending For Last Year',
-    colors: ['green'],
-    library: {
-      yAxis: {
-           labels: {
-               format: '${value}'
-           }
-       },
-          tooltip: {
-            pointFormat: 'Total Spent: <b>{point.y}</b>',
-            xDateFormat: '%B',
-            valuePrefix: '$'
-          }
-        } %>
+  <%= line_chart Transaccion.order('created_at DESC').limit(20).group(:created_at).sum(:precio_actual),
+  title: 'Monthly Spending For Last Year',
+  colors: ['green'],
+  library: {
+    yAxis: {
+     labels: {
+       format: '${value}'
+     }
+   },
+   tooltip: {
+    pointFormat: 'Total Spent: <b>{point.y}</b>',
+    xDateFormat: '%B',
+    valuePrefix: '$'
+  }
+} %>
 
 
 <script>
-$(document).ready(function () {
-  console.log("se cargo la pagina");
-$('#get_actual_price').click(function(){
-$.ajax({
-        url:'/index/get_actual_price',
-        dataType: 'script',
-        type: 'GET',
-        error:function(data){
-            debugger;
-        }
-      });
-});
+  $(document).ready(function () {
+    console.log("se cargo la pagina");
 
-$('#execute_transactions').click(function(){
-$.ajax({
-        url:'/index/iniciar_bot',
-        dataType: 'script',
-        type: 'GET',
-        data: {"plata" : $("#virtual_coin_input").val(),
-        "porcentaje": $("#porcentaje_input").val()},
-        error:function(data){
-            debugger;
-        }
-      });
-});
 
-});
+  });
 </script>
