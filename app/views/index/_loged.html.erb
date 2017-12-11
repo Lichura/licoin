@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-around align-items-center align-content-around flex-wrap">
   <div class="row">
-
+    <div class="p-2">
                                   <div class="form-group row">
                                     <label class="col-sm-6 col-form-label">Precio Actual</label>
                                     <div class="col-sm-6">
@@ -27,7 +27,8 @@
                                 </div>
                             <button id="get_actual_price" class="btn btn-primary">Obtener precio</button>
                             </div>
-
+</div>
+<div class="p-2">
                               <div class="form-group row">
                                 <label class="col-sm-6 col-form-label">USD</label>
                                 <div class="col-sm-6">
@@ -43,7 +44,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-6 col-form-label">Resultado neto:</label>
                                 <div class="col-sm-6">
-                                  <p class="form-control-static" >0</p>
+                                  <p class="form-control-static" id="net_result_text">0</p>
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -58,23 +59,31 @@
                                   <input class="form-control" type="text" value="0" id="example-text-input">
                                 </div>
                               </div>
-        <button type="submit" class="btn btn-primary">Ejecutar</button>
+        <button type="submit" id="execute_transactions" class="btn btn-primary">Ejecutar</button>
         <button type="submit" class="btn btn-danger">Detener</button>
+</div>
 
+<div class="p-2">
+                              <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">Porcentaje actual respecto a precio de compra</label>
+                                <div class="col-sm-6">
+                                  <p class="form-control-static" >0</p>
+                                </div>
+                              </div>
+                                <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">Ultimo precio de compra:</label>
+                                <div class="col-sm-6">
+                                  <p class="form-control-static" >0</p>
+                                </div>
+                              </div>
+                                                          <button id="get_actual_price" class="btn btn-primary">historico de transacciones</button>
+
+</div>
     </div>
 </div>
 
 
 
-
-
-<br>
-<br>
-<br>
-
-<button>historico de transacciones</button>
-<h3>Porcentaje actual respecto a precio de compra</h3>
-<h3>Ultimo precio de compra:</h3>
 
 
 
@@ -83,10 +92,19 @@
 $(document).ready(function () {
   console.log("se cargo la pagina");
 $('#get_actual_price').click(function(){
-
-
 $.ajax({
         url:'/index/get_actual_price',
+        dataType: 'script',
+        type: 'GET',
+        error:function(data){
+            debugger;
+        }
+      });
+});
+
+$('#execute_transactions').click(function(){
+$.ajax({
+        url:'/index/iniciar_bot',
         dataType: 'script',
         type: 'GET',
         error:function(data){

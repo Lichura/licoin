@@ -19,6 +19,14 @@ class IndexController < ApplicationController
   	end
   end
 
+  def iniciar_bot
+    @transaccion = Transaccion.new
+    @transaccion = @transaccion.logica_principal(100,'BCH',1)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def guardar_precio_historico(precio)
   	@transaccion = Transaccion.new(precio_actual: precio)
   	@transaccion.save
