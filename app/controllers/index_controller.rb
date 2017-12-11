@@ -21,7 +21,9 @@ class IndexController < ApplicationController
 
   def iniciar_bot
     @transaccion = Transaccion.new
-    @transaccion = @transaccion.logica_principal(100,'BCH',1)
+    puts(params[:plata])
+    puts(params[:porcentaje])
+    @transaccion = @transaccion.logica_principal(params[:plata].to_f,'BCH',params[:porcentaje].to_f, true)
     respond_to do |format|
       format.js
     end

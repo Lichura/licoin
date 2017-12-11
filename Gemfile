@@ -41,6 +41,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'popper_js'
 
+gem "chartkick"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
